@@ -1,20 +1,24 @@
-// src/index.ts
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
+import express from 'express';
+import cors from 'cors';
+import authRoutes from './routes/auth.routes.js';
+import { errorHandler, notFound } from './middlewares/error.js';
 
-dotenv.config();
+const createApp = () => {
+  const app = express();
+  app.use(cors());
+  app.use(express.json());
 
-const app = express();
+  app.use('/auth', authRoutes);
+
+  app.use(notFound);
+  app.use(errorHandler);
+
+  return app;
+};
+
 const PORT = process.env.PORT || 4000;
-
-// 미들웨어
-app.use(cors());
-app.use(express.json());
-
-// // 라우터 연결
-// app.use("/messages", messageRouter);
+const app = createApp();
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
-  });
+});
