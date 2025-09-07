@@ -12,5 +12,11 @@ export const signUpSchema = z.object({
   name: z.string().min(1),
 });
 
-
 export type SignUpBody = z.infer<typeof signUpSchema>;
+
+export const signInSchema = z.object({
+  email: z.email(),
+  password: z.string().min(8),
+});
+
+export type SignInBody = z.infer<typeof signInSchema>;

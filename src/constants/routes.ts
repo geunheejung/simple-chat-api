@@ -2,7 +2,11 @@
 export const ROUTES = {
   AUTH: {
     SIGNUP: '/signup',
-    LOGIN: '/login',
-    LOGOUT: '/logout',
+    SIGNIN: '/signin',
+    SIGNOUT: '/signout',
   },  
+  SSE: {
+    CONNECT: '/sse',
+    NOTIFICATIONS: '/notifications',
+  }
 } as const;

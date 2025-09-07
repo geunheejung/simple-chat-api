@@ -7,6 +7,9 @@ export enum ErrorCode {
   INVALID_NAME = 'INVALID_NAME',
   // 이미 계정이 존재하는 경우
   ACCOUNT_EXISTS = 'ACCOUNT_EXISTS',
+  // 계정이 존재하지 않은 경우
+  NO_ACCOUNT = 'NO_ACCOUNT',
+  UNAUTHORIZED = 'UNAUTHORIZED'
 }
 
 export abstract class ApiResponse<T> {
