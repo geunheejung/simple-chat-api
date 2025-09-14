@@ -9,7 +9,8 @@ export enum ErrorCode {
   ACCOUNT_EXISTS = 'ACCOUNT_EXISTS',
   // 계정이 존재하지 않은 경우
   NO_ACCOUNT = 'NO_ACCOUNT',
-  UNAUTHORIZED = 'UNAUTHORIZED'
+  UNAUTHORIZED = 'UNAUTHORIZED',
+  BAD_REQUEST = 'BAD_REQUEST'
 }
 
 export abstract class ApiResponse<T> {

@@ -13,4 +13,20 @@ model User {
   password  String
   name      String
   createdAt DateTime @default(now())
+
+  // Relation: 한 유저가 여러 FcmToken 보유
+  tokens FcmToken[]
+}
+
+model FcmToken {
+  id         Int      @id @default(autoincrement())
+  token      String   @unique // FCM Registration Token
+  platform   String // 예: 'web' | 'ios' | 'android'
+  ua         String? // User Agent or Device Info
+  lastSeenAt DateTime @updatedAt // 마지막 확인 시각
+  createdAt  DateTime @default(now())
+
+  // Relation to User
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int?
 }

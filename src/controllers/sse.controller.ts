@@ -23,6 +23,8 @@ export const handleSSEConnect = (req: Request, res: Response) => {
 
   res.write(`event: unread:\n`);
   res.write(`data: ${JSON.stringify({ unread: 1 })}\n\n`);
+
+  console.log('CONNECT!');
   
   const ping = setInterval(() => {
     res.write(`event: ping:\n`);
@@ -32,6 +34,7 @@ export const handleSSEConnect = (req: Request, res: Response) => {
   }, 25_000);
 
   req.on('close', () => {
+    console.log('CLOSE!')
     clearInterval(ping);
     sseClients.delete(res);
   });
